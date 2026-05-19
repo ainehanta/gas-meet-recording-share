@@ -1,0 +1,22 @@
+{
+  "name": "gas-meet-recording-share",
+  "version": "0.0.0",
+  "description": "",
+  "license": "MIT",
+  "author": "",
+  "scripts": {
+    "postinstall": "./scripts/precheck.sh",
+    "login": "clasp login",
+    "clone": "clasp clone --rootDir src",
+    "push": "clasp push",
+    "watch": "clasp push --watch",
+    "deploy": "clasp push && clasp deploy --description $(jq -n -r 'now | todateiso8601')",
+    "undeploy": "clasp undeploy --all",
+    "configure": "source .env && ./scripts/configure.sh",
+    "open-webapp": "source .env && clasp open-web-app $(./scripts/deploymentid.sh)"
+  },
+  "devDependencies": {
+    "@google/clasp": "3.3.0",
+    "@types/google-apps-script": "2.0.8"
+  }
+}
